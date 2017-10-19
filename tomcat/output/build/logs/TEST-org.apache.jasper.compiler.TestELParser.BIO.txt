@@ -1,0 +1,40 @@
+Testsuite: org.apache.jasper.compiler.TestELParser
+Tests run: 37, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,116 sec
+
+Testcase: testEscape01 took 0,056 sec
+Testcase: testEscape02 took 0,001 sec
+Testcase: testEscape03 took 0,001 sec
+Testcase: testEscape04 took 0 sec
+Testcase: testEscape05 took 0 sec
+Testcase: testEscape07 took 0 sec
+Testcase: testEscape08 took 0 sec
+Testcase: testEscape09 took 0 sec
+Testcase: testEscape10 took 0 sec
+Testcase: testTernary01 took 0,002 sec
+Testcase: testTernary02 took 0 sec
+Testcase: testTernary03 took 0 sec
+Testcase: testTernary04 took 0 sec
+Testcase: testTernary05 took 0 sec
+Testcase: testTernary06 took 0 sec
+Testcase: testTernary07 took 0 sec
+Testcase: testTernary08 took 0,001 sec
+Testcase: testTernary09 took 0 sec
+Testcase: testTernary10 took 0 sec
+Testcase: testTernary11 took 0,001 sec
+Testcase: testTernary12 took 0 sec
+Testcase: testTernary13 took 0,001 sec
+Testcase: testCompound01 took 0,001 sec
+Testcase: testCompound02 took 0 sec
+Testcase: testCompound03 took 0 sec
+Testcase: testText took 0 sec
+Testcase: testFunction01 took 0,001 sec
+Testcase: testFunction02 took 0 sec
+Testcase: testFunction03 took 0 sec
+Testcase: testFunction04 took 0 sec
+Testcase: testFunction05 took 0 sec
+Testcase: testVariable took 0 sec
+Testcase: testLiteral took 0 sec
+Testcase: testQuotes01 took 0 sec
+Testcase: testQuotes02 took 0 sec
+Testcase: testQuotes03 took 0,001 sec
+Testcase: testTernaryBug56031 took 0 sec

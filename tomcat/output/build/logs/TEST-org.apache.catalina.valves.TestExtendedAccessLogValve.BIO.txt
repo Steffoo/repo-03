@@ -1,0 +1,11 @@
+Testsuite: org.apache.catalina.valves.TestExtendedAccessLogValve
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,036 sec
+
+Testcase: doubleQuoteEnd took 0,019 sec
+Testcase: doubleQuote took 0 sec
+Testcase: testNull took 0 sec
+Testcase: alpha took 0 sec
+Testcase: empty took 0 sec
+Testcase: doubleQuoteMiddle took 0 sec
+Testcase: doubleQuoteStart took 0 sec
+Testcase: singleQuoteMiddle took 0 sec

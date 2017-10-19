@@ -1,0 +1,5 @@
+Testsuite: org.apache.juli.TestClassLoaderLogManager
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2,055 sec
+
+Testcase: testBug56082 took 2,02 sec
+Testcase: testReplace took 0,001 sec

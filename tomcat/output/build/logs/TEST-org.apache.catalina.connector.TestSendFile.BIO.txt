@@ -1,0 +1,54 @@
+Testsuite: org.apache.catalina.connector.TestSendFile
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,71 sec
+------------- Standard Output ---------------
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508280-0.txt with 100000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508285-1.txt with 200000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508289-2.txt with 300000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508293-3.txt with 400000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508296-4.txt with 500000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508301-5.txt with 600000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508309-6.txt with 700000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508312-7.txt with 800000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508315-8.txt with 900000 bytes.
+Created file:/var/folders/48/m3dtslmd7pg6pxkl2tqwlc940000gn/T/testSendFile-1508414508318-9.txt with 1000000 bytes.
+Server Wrote 100000 bytes in 2 ms.
+Client received 100000 bytes in 82 ms.
+Server Wrote 200000 bytes in 1 ms.
+Client received 200000 bytes in 1 ms.
+Server Wrote 300000 bytes in 1 ms.
+Client received 300000 bytes in 2 ms.
+Server Wrote 400000 bytes in 1 ms.
+Client received 400000 bytes in 3 ms.
+Server Wrote 500000 bytes in 2 ms.
+Client received 500000 bytes in 2 ms.
+Server Wrote 600000 bytes in 1 ms.
+Client received 600000 bytes in 2 ms.
+Server Wrote 700000 bytes in 2 ms.
+Client received 700000 bytes in 2 ms.
+Server Wrote 800000 bytes in 2 ms.
+Client received 800000 bytes in 3 ms.
+Server Wrote 900000 bytes in 2 ms.
+Client received 900000 bytes in 2 ms.
+Server Wrote 1000000 bytes in 2 ms.
+Client received 1000000 bytes in 3 ms.
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+Okt 19, 2017 2:01:48 PM org.apache.catalina.startup.LoggingBaseTest setUp
+INFORMATION: Starting test case [testSendFile]
+Okt 19, 2017 2:01:48 PM org.apache.coyote.http11.Http11Protocol init
+INFORMATION: Initializing Coyote HTTP/1.1 on http-127.0.0.1-auto-1-62788
+Okt 19, 2017 2:01:48 PM org.apache.catalina.core.StandardService start
+INFORMATION: Starting service Tomcat
+Okt 19, 2017 2:01:48 PM org.apache.catalina.core.StandardEngine start
+INFORMATION: Starting Servlet Engine: Apache Tomcat/6.0.53
+Okt 19, 2017 2:01:48 PM org.apache.coyote.http11.Http11Protocol start
+INFORMATION: Starting Coyote HTTP/1.1 on http-127.0.0.1-auto-1-62788
+Okt 19, 2017 2:01:48 PM org.apache.coyote.http11.Http11Protocol pause
+INFORMATION: Pausing Coyote HTTP/1.1 on http-127.0.0.1-auto-1-62788
+Okt 19, 2017 2:01:49 PM org.apache.catalina.core.StandardService stop
+INFORMATION: Stopping service Tomcat
+Okt 19, 2017 2:01:49 PM org.apache.coyote.http11.Http11Protocol destroy
+INFORMATION: Stopping Coyote HTTP/1.1 on http-127.0.0.1-auto-1-62788
+------------- ---------------- ---------------
+
+Testcase: testSendFile took 1,697 sec

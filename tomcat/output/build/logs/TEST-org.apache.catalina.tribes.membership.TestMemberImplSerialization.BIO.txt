@@ -1,0 +1,5 @@
+Testsuite: org.apache.catalina.tribes.membership.TestMemberImplSerialization
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,09 sec
+
+Testcase: testSerializationOne took 0,076 sec
+Testcase: testCompare took 0 sec
