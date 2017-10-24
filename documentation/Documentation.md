@@ -101,7 +101,7 @@ at java.lang.Thread.run(Thread.java:745)
 Der Request-Ablauf ist in zwei Kategorien unterteilt:
 1. Der Request-Ablauf (siehe Abbilung 3)
 2. Der Request-Thread-Ablauf (siehe Abbildung 4)
-![Request-Ablauf](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/lsd-lecture/repo-03/master/documentation/Pictures/Filtered.pdf)
+![Request-Ablauf](/Pictures/StackTrace.png)
 ![Request-Thread-Ablauf](/Pictures/Request_Procedure.pdf?raw=true "Abb. 4: Request-Thread-Ablauf")
 
 <h1>Probleme</h1>
