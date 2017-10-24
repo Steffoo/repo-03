@@ -142,5 +142,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bin" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="ant-1.10.1" level="project" />
+    <orderEntry type="library" name="javax.xml.rpc:javax.xml.rpc-api:1.1.1" level="project" />
+    <orderEntry type="library" name="org.eclipse.birt.runtime.3_7_1:javax.wsdl:1.5.1" level="project" />
+    <orderEntry type="library" name="org.junit.contrib:junit-theories:4.12" level="project" />
   </component>
 </module>
