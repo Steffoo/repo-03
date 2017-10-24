@@ -19,7 +19,7 @@ die dynamischen Analyse.
 <h2>Statische Analyse</h2>
 Die statische Analyse wurde mit folgenden Schritten erarbeitet:</br>
 1. Mithilfe des Linux-Tools "grep" wurden alle import-Anweisungen aus den
-Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert (siehe Abb. 1).
+Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert.
 
 ![Ungefilterte import-Anweisungen](Pictures/NotFiltered.png)
 
@@ -44,9 +44,9 @@ grep -v "coyote_memory" | grep -v "coyote_ajp" |
 grep -v "org_*" |
 ```
 5. Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
-die Abhängigkeiten zwischen den Paketen angibt (siehe Abb 2.).
+die Abhängigkeiten zwischen den Paketen angibt.
 
-![Gefilterte import-Anweisungen](Pictures/Filtered.png)
+![Gefilterte import-Anweisungen](Pictures/Filtered.png "test")
 
 </br>
 
@@ -103,8 +103,8 @@ at java.lang.Thread.run(Thread.java:745)
 
 <h1>Ergebniss der Analyse</h1>
 Der Request-Ablauf ist in zwei Kategorien unterteilt:
-1. Der Request-Ablauf (siehe Abbilung 3)
-2. Der Request-Thread-Ablauf (siehe Abbildung 4)
+1. Der Request-Ablauf (erste folgende Abbildung)
+2. Der Request-Thread-Ablauf (zweite folgende Abbildung)
 
 ![Request-Ablauf](Pictures/StackTrace.png)
 
