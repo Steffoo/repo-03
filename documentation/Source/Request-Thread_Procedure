@@ -1,0 +1,9 @@
+digraph {
+java.lang.Thread.run -> org.apache.tomcat.util.net.JIoEndpoint$Worker.run
+org.apache.tomcat.util.net.JIoEndpoint$Worker.run -> org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process
+org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process -> org.apache.coyote.http11.Http11Processor.process
+org.apache.coyote.http11.Http11Processor.process -> org.apache.catalina.connector.CoyoteAdapter.service
+org.apache.catalina.connector.CoyoteAdapter.service -> org.apache.catalina.connector.Connector
+org.apache.catalina.connector.Connector -> org.apache.catalina.connector.Request
+org.apache.catalina.connector.Connector -> org.apache.catalina.connector.Request
+}

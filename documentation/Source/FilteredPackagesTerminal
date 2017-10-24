@@ -1,0 +1,20 @@
+
+echo "digraph {" > test.dot ; grep -R "^import" * |
+sed -E "s/\//./g" | sed -E "s/\.java//g" | sed -E "s/\.\*//g" | sed -E "s/import //g" |
+grep -v ":java" | grep -v ":javax" | sed -E "s/;//g" | sed -E "s/:/ -> /" |
+grep -v "\.properties" | sed -E "s/\./_/g" | sed -E "s/_[A-Z].* ->/ ->/g" |
+sed -E "s/-> ([a-z_]*)_[A-Z][a-zA-Z]*/-> \1/g" | sed -E "s/org_apache_//g" |
+grep -v "el_*" |
+grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" | grep -v "tomcat_*" |
+grep -v "catalina_ant*" | grep -v "catalina_authenticator*" |
+grep -v "catalina_deploy*" | grep -v "catalina_filters*" |
+grep -v "catalina_ha_*" | grep -v "catalina_loader*" | grep -v "catalina_manager*" |
+grep -v "catalina_mbeans*" | grep -v "catalina_realmÜ" |
+grep -v "catalina_servlets*" |
+grep -v "catalina_session*" | grep -v "catalina_ssi*" |
+grep -v "catalina_startup*" | grep -v "catalina_tribes*" |
+grep -v "catalina_users*" | grep -v "catalina_util*" |
+grep -v "coyote_memory" | grep -v "coyote_ajp" |
+grep -v "org_*" |
+sort | uniq >> test.dot ; echo "}" >> test.dot ;
+dot -Tpdf test.dot > test.pdf
