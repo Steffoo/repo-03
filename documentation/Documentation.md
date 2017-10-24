@@ -101,8 +101,10 @@ at java.lang.Thread.run(Thread.java:745)
 Der Request-Ablauf ist in zwei Kategorien unterteilt:
 1. Der Request-Ablauf (siehe Abbilung 3)
 2. Der Request-Thread-Ablauf (siehe Abbildung 4)
-![Request-Ablauf](/Pictures/StackTrace.png)
-![Request-Thread-Ablauf](/Pictures/Request_Procedure.pdf?raw=true "Abb. 4: Request-Thread-Ablauf")
+
+![Request-Ablauf](Pictures/StackTrace.png)
+
+![Request-Thread-Ablauf](Pictures/Request_Procedure.pdf "Abb. 4: Request-Thread-Ablauf")
 
 <h1>Probleme</h1>
 Während der Bearbeitung, der Aufgabe, sind uns folgende Probleme aufgefallen:
