@@ -29,7 +29,7 @@ Quellpaket -> Zielpaket (Quellpaket importiert Zielpaket).
 Request-Ablauf relevant sind.
 4. Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
 herauszufiltern (siehe folgende Codezeilen).
-...
+```
 grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
 grep -v "tomcat_*" | grep -v "catalina_ant*" | grep -v "catalina_authenticator*" |
 grep -v "catalina_deploy*" | grep -v "catalina_filters*" |
@@ -40,7 +40,7 @@ grep -v "catalina_startup*" | grep -v "catalina_tribes*" |
 grep -v "catalina_users*" | grep -v "catalina_util*" |
 grep -v "coyote_memory" | grep -v "coyote_ajp" |
 grep -v "org_*" |
-...
+```
 5. Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
 die Abhängigkeiten zwischen den Paketen angibt (siehe Abb 2.).
 ![Ungefilterte import-Anweisungen](/Dokumentation/Pictures/NotFiltered.pdf?raw=true "Ungefilterte import-Anweisung (Abbildung 2)")
