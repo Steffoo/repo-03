@@ -51,14 +51,18 @@ Anhand der statischen Analyse fanden wir heraus, dass die catalina_connector-Kla
 als Schnittstelle für den Request-Ablauf dient. Deshalb haben wir dort den Debugger
 erneut angesetzt um den Ablauf zu verstehen. Dabei haben wir die Request-Klasse entdeckt,
 in der wir eine Exception geworfen haben, um die Klassenhierarchie (StackTrace) herauszufinden.</br>
-```try{
+
+```
+try{
     throw new Exception();
 } catch(Exception e){
     e.printStackTrace();
 }
 ```
 </br>
-```java.lang.Exception
+
+```
+java.lang.Exception
 	at org.apache.catalina.connector.Request.setConnector(Request.java:533)
 	at org.apache.catalina.connector.Connector.createRequest(Connector.java:1017)
 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:261)
@@ -69,7 +73,9 @@ in der wir eine Exception geworfen haben, um die Klassenhierarchie (StackTrace) 
 ```
 Diese wurde bei "java.lang.Thread" gestoppt, weshalb wird dort erneut eine Exception
 geworfen haben.</br>
-```java.lang.Exception
+
+```
+java.lang.Exception
 at org.apache.jsp.index_jsp._jspService(index_jsp.java:75)
 at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
 at javax.servlet.http.HttpServlet.service(HttpServlet.java:723)
@@ -95,7 +101,7 @@ at java.lang.Thread.run(Thread.java:745)
 Der Request-Ablauf ist in zwei Kategorien unterteilt:
 1. Der Request-Ablauf (siehe Abbilung 3)
 2. Der Request-Thread-Ablauf (siehe Abbildung 4)
-![Request-Ablauf](/Pictures/Thread-Exception.pdf?raw=true "Abb. 3: Request-Ablauf")
+![Request-Ablauf](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/lsd-lecture/repo-03/master/documentation/Pictures/Filtered.pdf)
 ![Request-Thread-Ablauf](/Pictures/Request_Procedure.pdf?raw=true "Abb. 4: Request-Thread-Ablauf")
 
 <h1>Probleme</h1>
