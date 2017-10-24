@@ -20,7 +20,9 @@ die dynamischen Analyse.
 Die statische Analyse wurde mit folgenden Schritten erarbeitet:</br>
 1. Mithilfe des Linux-Tools "grep" wurden alle import-Anweisungen aus den
 Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert (siehe Abb. 1).
-![Ungefilterte import-Anweisungen](/Pictures/NotFiltered.png)
+
+![Ungefilterte import-Anweisungen](Pictures/NotFiltered.png)
+
 2. Mit dem Linux-Tool "sed" wurden die Resultate bearbeitet, damit diese
 menschenlesbar ausgegeben werden und direkt erkannt wird, welches Paket auf
 ein anderes Paket zugreift. Dafür haben wir folgendes Format verwendet:
@@ -43,7 +45,9 @@ grep -v "org_*" |
 ```
 5. Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
 die Abhängigkeiten zwischen den Paketen angibt (siehe Abb 2.).
-![Ungefilterte import-Anweisungen](/Pictures/NotFiltered.png)
+
+![Gefilterte import-Anweisungen](Pictures/Filtered.png)
+
 </br>
 
 <h2>Dynamische Analyse</h2>
