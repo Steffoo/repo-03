@@ -20,7 +20,7 @@ die dynamischen Analyse.
 Die statische Analyse wurde mit folgenden Schritten erarbeitet:</br>
 1. Mithilfe des Linux-Tools "grep" wurden alle import-Anweisungen aus den
 Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert (siehe Abb. 1).
-![Ungefilterte import-Anweisungen](/Dokumentation/Pictures/NotFiltered.pdf?raw=true "Ungefilterte import-Anweisung (Abbildung 1)")
+![Ungefilterte import-Anweisungen](/documentation/Pictures/NotFiltered.pdf?raw=true "Ungefilterte import-Anweisung (Abbildung 1)")
 2. Mit dem Linux-Tool "sed" wurden die Resultate bearbeitet, damit diese
 menschenlesbar ausgegeben werden und direkt erkannt wird, welches Paket auf
 ein anderes Paket zugreift. Dafür haben wir folgendes Format verwendet:
@@ -43,7 +43,7 @@ grep -v "org_*" |
 ```
 5. Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
 die Abhängigkeiten zwischen den Paketen angibt (siehe Abb 2.).
-![Ungefilterte import-Anweisungen](/Dokumentation/Pictures/NotFiltered.pdf?raw=true "Ungefilterte import-Anweisung (Abbildung 2)")
+![Ungefilterte import-Anweisungen](/documentation/Pictures/NotFiltered.pdf?raw=true "Ungefilterte import-Anweisung (Abbildung 2)")
 </br>
 
 <h2>Dynamische Analyse</h2>
@@ -51,14 +51,14 @@ Anhand der statischen Analyse fanden wir heraus, dass die catalina_connector-Kla
 als Schnittstelle für den Request-Ablauf dient. Deshalb haben wir dort den Debugger
 erneut angesetzt um den Ablauf zu verstehen. Dabei haben wir die Request-Klasse entdeckt,
 in der wir eine Exception geworfen haben, um die Klassenhierarchie (StackTrace) herauszufinden.
-...
+```
 try{
     throw new Exception();
 } catch(Exception e){
     e.printStackTrace();
 }
-...
-...
+```
+```
 java.lang.Exception
 	at org.apache.catalina.connector.Request.setConnector(Request.java:533)
 	at org.apache.catalina.connector.Connector.createRequest(Connector.java:1017)
@@ -67,10 +67,10 @@ java.lang.Exception
 	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:610)
 	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:503)
 	at java.lang.Thread.run(Thread.java:748)
-...
+```
 Diese wurde bei "java.lang.Thread" gestoppt, weshalb wird dort erneut eine Exception
 geworfen haben.
-...
+```
 java.lang.Exception
 at org.apache.jsp.index_jsp._jspService(index_jsp.java:75)
 at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
@@ -91,14 +91,14 @@ at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
 at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:610)
 at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:503)
 at java.lang.Thread.run(Thread.java:745)
-...
+```
 
 <h1>Ergebniss der Analyse</h1>
 Der Request-Ablauf ist in zwei Kategorien unterteilt:
 1. Der Request-Ablauf (siehe Abbilung 3)
 2. Der Request-Thread-Ablauf (siehe Abbildung 4)
-![Request-Ablauf](/Dokumentation/Pictures/NotFiltered.pdf?raw=true "Abb. 3: Request-Ablauf")
-![Request-Thread-Ablauf](/Dokumentation/Pictures/NotFiltered.pdf?raw=true "Abb. 4: Request-Thread-Ablauf")
+![Request-Ablauf](/documentation/Pictures/NotFiltered.pdf?raw=true "Abb. 3: Request-Ablauf")
+![Request-Thread-Ablauf](/documentation/Pictures/NotFiltered.pdf?raw=true "Abb. 4: Request-Thread-Ablauf")
 
 <h1>Probleme</h1>
 Während der Bearbeitung, der Aufgabe, sind uns folgende Probleme aufgefallen:
