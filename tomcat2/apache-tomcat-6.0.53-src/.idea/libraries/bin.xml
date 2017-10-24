@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="bin">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/output/build/bin/commons-daemon.jar!/" />
       <root url="jar://$PROJECT_DIR$/output/build/bin/tomcat-juli.jar!/" />
       <root url="jar://$PROJECT_DIR$/output/build/bin/bootstrap.jar!/" />
+      <root url="jar://$PROJECT_DIR$/output/build/bin/commons-daemon.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
