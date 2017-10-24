@@ -30,13 +30,7 @@ Request-Ablauf relevant sind.
 4. Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
 herauszufiltern (siehe folgende Codezeilen).
 
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
-
-```
-grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
+```grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
 grep -v "tomcat_*" | grep -v "catalina_ant*" | grep -v "catalina_authenticator*" |
 grep -v "catalina_deploy*" | grep -v "catalina_filters*" |
 grep -v "catalina_ha_*" | grep -v "catalina_loader*" | grep -v "catalina_manager*" |
