@@ -1,8 +1,6 @@
-Autoren: Inan Bayram, Mustafa Yildiz, Patrick Domscheid</br>
-Stand: 24.10.17</br>
-
+<b>Autoren:</b> Inan Bayram, Mustafa Yildiz, Patrick Domscheid</br>
+<b>Stand</b>: 24.10.17</br>
 <hr>
-
 <h1>Einleitung</h1>
 Im Rahmen der LSD(Large Scale Development)-Vorlesung mussten wir
 die Architektur des Tomcat 6.0.53 untersuchen. Die Analyse der
@@ -18,18 +16,18 @@ die dynamischen Analyse.
 
 <h2>Statische Analyse</h2>
 Die statische Analyse wurde mit folgenden Schritten erarbeitet:</br>
-1. Mithilfe des Linux-Tools "grep" wurden alle import-Anweisungen aus den
+<b>1.</b> Mithilfe des Linux-Tools "grep" wurden alle import-Anweisungen aus den
 Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert.
 
 ![Ungefilterte import-Anweisungen](Pictures/NotFiltered.png)
 
-2. Mit dem Linux-Tool "sed" wurden die Resultate bearbeitet, damit diese
+<b>2.</b> Mit dem Linux-Tool "sed" wurden die Resultate bearbeitet, damit diese
 menschenlesbar ausgegeben werden und direkt erkannt wird, welches Paket auf
 ein anderes Paket zugreift. Dafür haben wir folgendes Format verwendet:
 Quellpaket -> Zielpaket (Quellpaket importiert Zielpaket).
-3. Mithilfe des Debuggers haben wir herauskristalisisert, welche Pakete für den
+<b>3.</b> Mithilfe des Debuggers haben wir herauskristalisisert, welche Pakete für den
 Request-Ablauf relevant sind.
-4. Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
+<b>4.</b> Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
 herauszufiltern (siehe folgende Codezeilen).
 
 ```grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
@@ -63,7 +61,6 @@ try{
     e.printStackTrace();
 }
 ```
-</br>
 
 ```
 java.lang.Exception
@@ -102,17 +99,17 @@ at java.lang.Thread.run(Thread.java:745)
 ```
 
 <h1>Ergebniss der Analyse</h1>
-Der Request-Ablauf ist in zwei Kategorien unterteilt:
-1. Der Request-Ablauf (erste folgende Abbildung)
-2. Der Request-Thread-Ablauf (zweite folgende Abbildung)
+Der Request-Ablauf ist in zwei Kategorien unterteilt:</br>
+<b>1.</b> Der Request-Ablauf (erste folgende Abbildung)</br>
+<b>2.</b> Der Request-Thread-Ablauf (zweite folgende Abbildung)</br>
 
 ![Request-Ablauf](Pictures/StackTrace.png)
 
 ![Request-Thread-Ablauf](Pictures/Request_Procedure.png)
 
 <h1>Probleme</h1>
-Während der Bearbeitung, der Aufgabe, sind uns folgende Probleme aufgefallen:
-1. Zu Beginn waren die Diagramme von dem Tool "Graphviz" sehr unübersichtlich
-und die Pakete, die nicht relevant gewesen sind, haben nicht herausgestochen.
-2. Das Tool "Graphviz" hat ein Diagramm nicht zusammenhängend gezeichnet,
+Während der Bearbeitung, der Aufgabe, sind uns folgende Probleme aufgefallen:</br>
+<b>1.</b> Zu Beginn waren die Diagramme von dem Tool "Graphviz" sehr unübersichtlich
+und die Pakete, die nicht relevant gewesen sind, haben nicht herausgestochen.</br>
+<b>2.</b> Das Tool "Graphviz" hat ein Diagramm nicht zusammenhängend gezeichnet,
 obwohl die Syntax stimmte
