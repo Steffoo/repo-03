@@ -25,9 +25,12 @@ Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert.
 menschenlesbar ausgegeben werden und direkt erkannt wird, welches Paket auf
 ein anderes Paket zugreift. Dafür haben wir folgendes Format verwendet:
 Quellpaket -> Zielpaket (Quellpaket importiert Zielpaket).</br>
-<b>3.</b> Mithilfe des Debuggers haben wir herauskristalisisert, welche Pakete für den
-Request-Ablauf relevant sind.</br>
-<b>4.</b> Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
+<b>3.</b> Mithilfe des Debuggers haben wir herauskristalisisert, welche Pakete
+und Klassen für den Request-Ablauf relevant sind.</br>
+<b>4.</b> Die Resultate aus Schritt 3. wurden in der "Documentation_Classes"-
+Datei dokumentiert und anschließend untersucht, wodurch eine genauere
+Auswahl getroffen wurde, welche Pakete von Bedeutung sind.
+<b>5.</b> Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
 herauszufiltern (siehe folgende Codezeilen).</br>
 
 ```grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
