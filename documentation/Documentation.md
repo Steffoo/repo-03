@@ -24,11 +24,11 @@ Dateien, in dem Verzeichnis "java.org.apache", herausgefiltert.
 <b>2.</b> Mit dem Linux-Tool "sed" wurden die Resultate bearbeitet, damit diese
 menschenlesbar ausgegeben werden und direkt erkannt wird, welches Paket auf
 ein anderes Paket zugreift. Dafür haben wir folgendes Format verwendet:
-Quellpaket -> Zielpaket (Quellpaket importiert Zielpaket).
+Quellpaket -> Zielpaket (Quellpaket importiert Zielpaket).</br>
 <b>3.</b> Mithilfe des Debuggers haben wir herauskristalisisert, welche Pakete für den
-Request-Ablauf relevant sind.
+Request-Ablauf relevant sind.</br>
 <b>4.</b> Das Linux-Tool "grep" wurde verwendet, um alle unrelevanten Pakete
-herauszufiltern (siehe folgende Codezeilen).
+herauszufiltern (siehe folgende Codezeilen).</br>
 
 ```grep -v "el_*" | grep -v "jasper_*" | grep -v "jk_*" | grep -v "naming_*" |
 grep -v "tomcat_*" | grep -v "catalina_ant*" | grep -v "catalina_authenticator*" |
@@ -41,7 +41,7 @@ grep -v "catalina_users*" | grep -v "catalina_util*" |
 grep -v "coyote_memory" | grep -v "coyote_ajp" |
 grep -v "org_*" |
 ```
-5. Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
+<b>5.</b> Mithilfe dem Tool "vizgraph" wurde ein PDF-Dokument erstellt, welches
 die Abhängigkeiten zwischen den Paketen angibt.
 
 ![Gefilterte import-Anweisungen](Pictures/Filtered.png "test")
