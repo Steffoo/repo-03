@@ -76,7 +76,11 @@ java.lang.Exception
 	at java.lang.Thread.run(Thread.java:748)
 ```
 Diese wurde bei "java.lang.Thread" gestoppt, weshalb wird dort erneut eine Exception
-geworfen haben.</br>
+geworfen haben. Diese ist bei der Klasse JIoEndpoint gestoppt. Deshalb haben wir uns diese Klasse
+angeschaut und bemerkt, dass es nicht die "oberste" Klasse sein kann. Wir hatten
+die Idee einen bestehenden Servlet aufzurufen und darin die Exception zu werfen.
+Dieses Servlet ist "webapps/ROOT/index.jsp". Folgendes Ergebnis ist dabei
+herausgekommen: </br>
 
 ```
 java.lang.Exception
@@ -109,6 +113,12 @@ Der Request-Ablauf ist in zwei Kategorien unterteilt:</br>
 ![Request-Ablauf](Pictures/StackTrace.png)
 
 ![Request-Thread-Ablauf](Pictures/Request_Procedure.png)
+
+</br>
+
+<b>3.</b> Aufgrund der unterschiedlichen Resultate beim Ablauf mit und ohne
+Servlet, haben wir im Internet nachgeschaut, woran es liegen kann. Das Ergebnis ist,
+dass das Paket Jasper nur bei der Verwendung von einem Servlet benutzt wird.</br>
 
 <h1>Probleme</h1>
 Während der Bearbeitung, der Aufgabe, sind uns folgende Probleme aufgefallen:</br>
