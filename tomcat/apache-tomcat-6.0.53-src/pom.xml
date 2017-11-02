@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>LSD</groupId>
+  <artifactId>tomcat-6.0.53</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+<build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>org.apache.catalina.startup.Bootstrap</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+<dependencies>
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>bootstrap</artifactId>
+    <version>4.0.0-beta.2</version>
+</dependency>
+<dependency>
+    <groupId>tomcat</groupId>
+    <artifactId>tomcat-juli</artifactId>
+    <version>5.5.23</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>annotations-api</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>jsp-api</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>el-api</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>catalina</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tribes</artifactId>
+    <version>6.0.13</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>catalina-ha</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>catalina-ant</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>coyote</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>jasper</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>jasper-el</artifactId>
+    <version>6.0.53</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-dbcp</artifactId>
+    <version>9.0.1</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.birt.runtime.3_7_1</groupId>
+    <artifactId>javax.wsdl</artifactId>
+    <version>1.5.1</version>
+</dependency>
+<dependency>
+    <groupId>javax.xml.rpc</groupId>
+    <artifactId>javax.xml.rpc-api</artifactId>
+    <version>1.1.1</version>
+</dependency>
+</dependencies>
+</project>
