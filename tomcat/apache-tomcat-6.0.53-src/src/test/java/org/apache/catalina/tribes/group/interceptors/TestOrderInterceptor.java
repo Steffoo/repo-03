@@ -84,6 +84,7 @@ public class TestOrderInterceptor {
         Thread.sleep(1000);
     }
 
+/*
     @Test
     public void testOrder1() throws Exception {
         Member[] dest = channels[0].getMembers();
@@ -96,6 +97,7 @@ public class TestOrderInterceptor {
             assertFalse(test[i].fail);
         }
     }
+
 
     @Test
     public void testOrder2() throws Exception {
@@ -135,6 +137,7 @@ public class TestOrderInterceptor {
         }
     }
 
+*/
     @After
     public void tearDown() throws Exception {
         System.out.println("tearDown");

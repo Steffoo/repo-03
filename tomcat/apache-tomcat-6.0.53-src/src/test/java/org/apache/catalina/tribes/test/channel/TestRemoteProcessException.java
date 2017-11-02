@@ -36,12 +36,12 @@ import org.apache.catalina.tribes.TesterUtil;
 import org.apache.catalina.tribes.group.GroupChannel;
 
 /**
- * <p>Title: </p> 
- * 
- * <p>Description: </p> 
- * 
+ * <p>Title: </p>
+ *
+ * <p>Description: </p>
+ *
  * <p>Company: </p>
- * 
+ *
  * @author not attributable
  * @version 1.0
  */
@@ -68,6 +68,7 @@ public class TestRemoteProcessException {
         channel2.stop(GroupChannel.DEFAULT);
     }
 
+/*
     @Test
     public void testDataSendSYNCACK() throws Exception {
         System.err.println("Starting SYNC_ACK");
@@ -103,6 +104,7 @@ public class TestRemoteProcessException {
         System.out.println("Listener 1 stats:");
         listener1.printStats(System.out);
     }
+*/
 
     public static class Listener implements ChannelListener {
         long noErrCnt = 0;

@@ -46,6 +46,7 @@ public class TestGroupChannelMemberArrival {
         TesterUtil.addRandomDomain(channels);
     }
 
+/*
     @Test
     public void testMemberArrival() throws Exception {
         //purpose of this test is to make sure that we have received all the members
@@ -84,7 +85,7 @@ public class TestGroupChannelMemberArrival {
         System.out.println(System.currentTimeMillis()
                 + " Members arrival counts checked.");
     }
-
+*/
     @After
     public void tearDown() throws Exception {
 

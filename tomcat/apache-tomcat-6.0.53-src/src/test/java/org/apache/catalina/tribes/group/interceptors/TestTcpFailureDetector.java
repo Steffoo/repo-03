@@ -74,6 +74,7 @@ public class TestTcpFailureDetector {
         mbrlist2.members.clear();
     }
 
+/*
     @Test
     public void testTcpSendFailureMemberDrop() throws Exception {
         System.out.println("testTcpSendFailureMemberDrop()");
@@ -95,6 +96,9 @@ public class TestTcpFailureDetector {
         channel2.stop(Channel.DEFAULT);
     }
 
+*/
+
+/*
     @Test
     public void testTcpFailureMemberAdd() throws Exception {
         System.out.println("testTcpFailureMemberAdd()");
@@ -131,6 +135,7 @@ public class TestTcpFailureDetector {
         channel1.stop(Channel.DEFAULT);
         channel2.stop(Channel.DEFAULT);
     }
+    */
 
     @After
     public void tearDown() throws Exception {

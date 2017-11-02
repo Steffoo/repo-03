@@ -41,7 +41,7 @@ public class TestGroupChannelStartStop {
     public void tearDown() throws Exception {
         try {channel.stop(Channel.DEFAULT);}catch (Exception ignore){ /* Ignore */ }
     }
-
+/*
     @Test
     public void testDoubleFullStart() throws Exception {
         int count = 0;
@@ -56,6 +56,7 @@ public class TestGroupChannelStartStop {
         assertEquals(count,2);
         channel.stop(Channel.DEFAULT);
     }
+*/
 
     @Test
     public void testScrap() throws Exception {
@@ -63,6 +64,7 @@ public class TestGroupChannelStartStop {
         ((ReceiverBase)channel.getChannelReceiver()).setMaxThreads(1);
     }
 
+/*
     @Test
     public void testDoublePartialStart() throws Exception {
         //try to double start the RX
@@ -75,7 +77,7 @@ public class TestGroupChannelStartStop {
         try {
             channel.start(Channel.MBR_RX_SEQ);
             count++;
-        } catch ( Exception x){/*expected*/}
+        } catch ( Exception x){}
         assertEquals(count,1);
         channel.stop(Channel.DEFAULT);
         //double the membership sender
@@ -88,7 +90,7 @@ public class TestGroupChannelStartStop {
         try {
             channel.start(Channel.MBR_TX_SEQ);
             count++;
-        } catch ( Exception x){/*expected*/}
+        } catch ( Exception x){}
         assertEquals(count,1);
         channel.stop(Channel.DEFAULT);
 
@@ -100,7 +102,7 @@ public class TestGroupChannelStartStop {
         try {
             channel.start(Channel.SND_RX_SEQ);
             count++;
-        } catch ( Exception x){/*expected*/}
+        } catch ( Exception x){}
         assertEquals(count,1);
         channel.stop(Channel.DEFAULT);
 
@@ -112,10 +114,12 @@ public class TestGroupChannelStartStop {
         try {
             channel.start(Channel.SND_TX_SEQ);
             count++;
-        } catch ( Exception x){/*expected*/}
+        } catch ( Exception x){}
         assertEquals(count,1);
         channel.stop(Channel.DEFAULT);
     }
+
+    */
 
     @Test
     public void testFalseOption() throws Exception {

@@ -32,12 +32,12 @@ import org.apache.catalina.tribes.group.GroupChannel;
 import org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor;
 
 /**
- * <p>Title: </p> 
- * 
- * <p>Description: </p> 
- * 
+ * <p>Title: </p>
+ *
+ * <p>Description: </p>
+ *
  * <p>Company: </p>
- * 
+ *
  * @author not attributable
  * @version 1.0
  */
@@ -67,6 +67,7 @@ public class TestDataIntegrity {
         channel2.stop(GroupChannel.DEFAULT);
     }
 
+/*
     @Test
     public void testDataSendNO_ACK() throws Exception {
         System.err.println("Starting NO_ACK");
@@ -127,6 +128,7 @@ public class TestDataIntegrity {
             assertEquals("Checking success messages.",msgCount*threadCount,listener1.count);
     }
 
+
     @Test
     public void testDataSendASYNC() throws Exception {
         System.err.println("Starting ASYNC");
@@ -137,6 +139,7 @@ public class TestDataIntegrity {
         System.err.println("Finished ASYNC");
         assertEquals("Checking success messages.",msgCount,listener1.count);
     }
+
 
     @Test
     public void testDataSendACK() throws Exception {
@@ -155,13 +158,13 @@ public class TestDataIntegrity {
         System.err.println("Finished SYNC_ACK");
         assertEquals("Checking success messages.",msgCount,listener1.count);
     }
-
+*/
     public static class Listener implements ChannelListener {
         long count = 0;
         public boolean accept(Serializable s, Member m) {
             return (s instanceof Data);
         }
-        
+
         public void messageReceived(Serializable s, Member m) {
             Data d = (Data)s;
             if ( !Data.verify(d) ) {
@@ -192,14 +195,14 @@ public class TestDataIntegrity {
             Arrays.fill(d.data,d.key);
             return d;
         }
-        
+
         public static boolean verify(Data d) {
             boolean result = (d.length == d.data.length);
             for ( int i=0; result && (i<d.data.length); i++ ) result = result && d.data[i] == d.key;
             return result;
         }
     }
-    
-    
+
+
 
 }
