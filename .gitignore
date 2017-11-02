@@ -6,6 +6,8 @@ javax_xml_rpc_javax_xml_rpc_api_1_1_1.xml
 org_eclipse_birt_runtime_3_7_1_javax_wsdl_1_5_1.xml
 _401_jsp.class
 _401_jsp.java
+logs/
+output/
 
 ### Maven ###
 target/
