@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                mvn clean compile assmebly:single
+                cd /tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assmebly:single
                 echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                mvn test
+                cd /tomcat/apache-tomcat-6.0.53-src/ && mvn test
                 echo 'Testing..'
             }
         }
