@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                cd /tomcat/apache-tomcat-6.0.53-src/ && mvn test
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
                 echo 'Testing..'
             }
         }
