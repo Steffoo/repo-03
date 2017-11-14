@@ -6,28 +6,28 @@ im folgenden beschrieben.
 ## Ablauf
 Zuallererst haben wir Jenkins auf dem Linux-Server installiert. Danach wurde eine
 Jenkins-Pipeline angelegt, damit der Tomcat in Jenkins gebaut und
-ausgeführt werden kann. Zum Schluss setzten wir einen Trigger, um zu
-gewährleisten, dass bei jedem GitHub-Push der Tomcat gebuilded wird, ebenso
-dass die Test ausgeführt werden und eine JAR-Datei abgelegt wird. Diese
-Schritte werden im folgenden detailierter erläutert.
+ausgefuehrt werden kann. Zum Schluss setzten wir einen Trigger, um zu
+gewaehrleisten, dass bei jedem GitHub-Push der Tomcat gebuilded wird, ebenso
+dass die Test ausgefuehrt werden und eine JAR-Datei abgelegt wird. Diese
+Schritte werden im folgenden detailierter erlaeutert.
 #### Jenkins-Installation
 Im folgenden werden die Arbeitsschritte zur Installation des CI-Tools "Jenkins"
 auf dem Linux-Server beschrieben. Vorraussetzung ist, dass man sich bereits
 als "root" auf dem Linux-Server angemeldet hat.
-1. Den Publickey von Jenkins.io dem Server manuell hinzufügen: <br>
+1. Den Publickey von Jenkins.io dem Server manuell hinzufuegen: <br>
 `
  sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 `
 2. Die Adresse der Paketquelle von Jenkins in die "source.list"-Datei
-des Linux-Servers hinzufügen: <br>
+des Linux-Servers hinzufuegen: <br>
 `
 sudo echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
 `
-3. Update ausführen, damit <i>apt-get</i> das neue Repository benutzt:<br>
+3. Update ausfuehren, damit <i>apt-get</i> das neue Repository benutzt:<br>
 `
 sudo apt-get update
 `
-4. Jenkins und seine Abhängigkeiten installieren:<br>
+4. Jenkins und seine Abhaengigkeiten installieren:<br>
 `
 sudo apt-get install jenkins
 `
@@ -36,7 +36,7 @@ nicht, kann dies mit dem folgenden Befehl gestartet werden<br>
 `
 sudo systemctl start jenkins
 `
-<br>Absofort läuft Jenkins unter <i>http://<Server-IP>:8080</i>
+<br>Absofort laeuft Jenkins unter <i>http://<Server-IP>:8080</i>
 
 
 #### Jenkins-Konfiguration
@@ -48,7 +48,7 @@ Im folgenden wird beschrieben, wie Jenkins konfiguriert wird:
 ![initialAdminPassword](Pictures/initial_password.png)
 
   Mithilfe des Unix-Befehls "cat" wurde die Datei, welche das Passwort
-  enthält, geöffnet und das Passwort kopiert:<br>
+  enthaelt, geöffnet und das Passwort kopiert:<br>
   `
   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
   `
@@ -63,7 +63,7 @@ wir bemerkt, dass kein Maven-Plugin installiert wurde (siehe 4.).
 
 ![Create admin user](Pictures/create_admin.png)
 
-4. Weil Maven als Abhängigkeit gefehlt hat, wurde es manuell installiert.
+4. Weil Maven als Abhaengigkeit gefehlt hat, wurde es manuell installiert.
 Wir haben uns dazu entschieden, Maven auf dem Linux-Server zu installieren und
 nicht direkt in Jenkins:<br>
 `
@@ -78,19 +78,19 @@ wird (Es wird vorausgesetzt, dass man in Jenkins eingeloggt ist):
 
 ![Create element](Pictures/create_element.png)
 
-<li>Im Feld "Geben Sie einen Element-Namen an" muss ein Name eingefügt werden.
-Wir verwendeten "repo-03". Im Anschluss wird "GitHub Organization" ausgewählt.
+<li>Im Feld "Geben Sie einen Element-Namen an" muss ein Name eingefuegt werden.
+Wir verwendeten "repo-03". Im Anschluss wird "GitHub Organization" ausgewaehlt.
 
 ![Create GitHub Organization](Pictures/create_element_2.png)
 
 2. Falls es sich um ein privates Repository handelt, muss ein "Credential"
 angelegt werden. Wird keiner angegeben, können nur öffentliche
-Repositories gescannt werden. Dafür wird in der Kategorie
+Repositories gescannt werden. Dafuer wird in der Kategorie
 "Projects > GitHub Organization >Credentials" auf Add geklickt
 
 ![Add credential](Pictures/add_credential.png)
 
-und das Formular ausgefüllt.
+und das Formular ausgefuellt.
 
 ![Credential formular](Pictures/credential_formular.png)
 3. In der Kategorie "Projects > GitHub Organization > Owner" den Namen der
@@ -102,7 +102,7 @@ GitHub Organization oder des GitHub User Accounts angeben
 4. Damit das richtige Repository gefunden wird, muss der Repo-Name gefiltert
 werden. In der Kategorie "Projects > GitHub Organization >
 Behaviours" wird auf Add geklickt und "Filter by name (with wildcards)"
-ausgewählt.
+ausgewaehlt.
 
 ![Add Filter](Pictures/filter_repo.png)
 
@@ -112,7 +112,7 @@ Bei dem Feld "Include" wird der Name des Repositories angegeben
 ![Filter by name](Pictures/filter_name.png)
 
 #### Tomcat zum ersten Mal builden
-Im folgenden wird beschrieben, welche Schritte gemacht werden müssen, damit
+Im folgenden wird beschrieben, welche Schritte gemacht werden muessen, damit
 Jenkins den Tomcat bauen kann
 1. Im Repository eine Datei namens "Jenkinsfile" anlegen
 
@@ -155,14 +155,14 @@ Die Pipeline ist in drei Teilen (Build, Test und Deploy) aufgebaut.
 <li> Test: </li>
 
 #### Trigger setzten
-Es wurde versucht den Trigger zuerst mit Webhooks zu realisiseren, was
+Es wurde versucht den Trigger zuerst mit Webhooks zu realisieren, was
 allerdings fehlgeschlagen ist, aber aufgrund der Gruendlichkeit, der Dokumentation,
-trotzdem erwähnt wird. Die entgültige Lösung war es, einen Trigger in der
-Pipeline hinzufügen.
+trotzdem erwaehnt wird. Die entgueltige Lösung war es, einen Trigger in der
+Pipeline hinzufuegen.
 
 ###### Webhooks (Fehlschlag)
   1. Auf GitHub ins Repository gehen, dann auf "Settings > Webhooks > Add Webhook"
 
-###### Trigger im Jenkinsfile hinzufügen
+###### Trigger im Jenkinsfile hinzufuegen
 
 Tests splitten
