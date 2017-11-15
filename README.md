@@ -1,7 +1,7 @@
 # repo-03
 
 ## Shortcuts
-[Documentation Assignment 3](https://github.com/lsd-lecture/repo-03/blob/master/documentation/Assignment_3)
+[Documentation Assignment 3](https://github.com/lsd-lecture/repo-03/blob/master/documentation/Assignment_3) <br/>
 [Documentation Assignment 5](https://github.com/lsd-lecture/repo-03/blob/master/documentation/Assignment_5)
 
 ---
