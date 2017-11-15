@@ -41,12 +41,12 @@ als "root" auf dem Linux-Server angemeldet hat.
    `
    sudo systemctl start jenkins
    `
-   <br>Absofort laeuft Jenkins unter <i>http://<Server-IP>:8080</i>
+   <br>Absofort laeuft Jenkins unter <i>http://SERVER-IP-ADRESSE:8080</i>
 
 
 #### Jenkins-Konfiguration
 Im folgenden wird beschrieben, wie Jenkins konfiguriert wird:
-1. Jenkins unter der IP-Adresse <i>http://<Server-IP>:8080</i> (in unserem Fall
+1. Jenkins unter der IP-Adresse <i>http://SERVER-IP-ADRESSE:8080</i> (in unserem Fall
    http://141.19.142.57:8080/) öffnen. Dort wird angezeigt, unter welchem Pfad das
    initial-Passwort liegt.
 
@@ -92,11 +92,11 @@ wird (Es wird vorausgesetzt, dass man in Jenkins eingeloggt ist):
 2. Falls es sich um ein privates Repository handelt, muss ein "Credential"
    angelegt werden. Wird keiner angegeben, können nur öffentliche
    Repositories gescannt werden. Dafuer wird in der Kategorie
-   "Projects > GitHub Organization >Credentials" auf Add geklickt
+   "Projects > GitHub Organization >Credentials" auf Add geklickt und das Formular ausgefuellt.
 
    ![Add credential](Pictures/add_credential.png)
 
-   und das Formular ausgefuellt.
+
 
   !  [Credential formular](Pictures/credential_formular.png)
 
@@ -106,10 +106,10 @@ wird (Es wird vorausgesetzt, dass man in Jenkins eingeloggt ist):
 
    ![Add owner](Pictures/owner.png)
 
-4. Damit das richtige Repository gefunden wird, muss der Repo-Name gefiltert
-   werden. In der Kategorie "Projects > GitHub Organization >
-   Behaviours" wird auf Add geklickt und "Filter by name (with wildcards)"
-   ausgewaehlt.
+4. Wenn in Schritt 3 eine Organizationsname eingegeben wird, muss ein Filter erstellt werden. Dies ist notwendig, da sonst alle Repositories der Organization in Jenkins übernommen werden. In unserem Beispiel benoetigen wir nur "repo-03" und erstellen daher eine Filterung.
+Um die Filterung zu aktivieren, in der Projekt Konfigutation auf "Projects > GitHub Organization >
+   Behaviours" wechseln und dann auf Add klicken und "Filter by name (with wildcards)"
+   auswaehlen.
 
    ![Add Filter](Pictures/filter_repo.png)
 
@@ -164,7 +164,7 @@ mit Build nacheinenander ausgeführt werden.
 <li> Test: Führt die Tests des Tomcats aus</li>
 <li> Deploy: </li>
 
-#### Trigger setzten
+#### Trigger setzen
 Es wurde versucht den Trigger zuerst mit Webhooks zu realisieren, was
 allerdings fehlgeschlagen ist, aber aufgrund der Gruendlichkeit, der Dokumentation,
 trotzdem erwaehnt wird. Die entgueltige Lösung war es, einen Trigger in der
@@ -184,6 +184,8 @@ wir einen Intervall im Jenkinsfile angelegt haben, der alle 5 Minuten beim
 Repository nachfrägt, ob sich etwas verändert hat, wenn ja, dann wird ein
 neuer Build ausgeführt.
 
+Die Zeitangaben sind einstellbar wie in [Cron](https://wiki.ubuntuusers.de/Cron/#section2)
+
 ```
 pipeline {
     agent any
@@ -193,5 +195,3 @@ pipeline {
     ...
   }
 ```
-
-Tests splitten
