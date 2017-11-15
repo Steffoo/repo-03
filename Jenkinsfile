@@ -6,21 +6,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Building...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assembly:single'
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
-                echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
                 echo 'Testing..'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
-                echo 'Just a test...'
+                echo 'Deploying...'
             }
         }
     }
