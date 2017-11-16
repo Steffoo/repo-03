@@ -147,6 +147,7 @@ Jenkins den Tomcat bauen kann.
                steps {
                    echo 'Testing..'
                    sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
+                   junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
                }
            }
            stage('Deploy') {
@@ -175,13 +176,14 @@ stage('Build') {
 ```
 
 #### Test
-In der Stage "Test" werden die Test ausgeführt.
+In der Stage "Test" werden die Test ausgeführt und anschließend die logs für die Tests abegelegt. Somit ist es möglich, bei Fehlschlag in einem Test die genauen Fehler einzusehen.
 
 ```
 stage('Test') {
                steps {
                    echo 'Testing..'
                    sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
+                   junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
                }
            }
 ```
