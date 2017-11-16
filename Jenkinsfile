@@ -29,7 +29,7 @@ pipeline {
         stage('Checkstyle'){
             steps {
                 echo 'Checkstyle...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:check'
             }
         }
         /*
