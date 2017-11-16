@@ -38,9 +38,9 @@ pipeline {
             steps {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site'
+                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/findbugsXml.xml'
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/findbugs.html'
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/project-reports.html'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/css'
             }
         }
 
