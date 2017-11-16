@@ -38,6 +38,7 @@ pipeline {
             steps {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean install site findbugs:findbugs'
+                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/index.html'
             }
         }
 
