@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assembly:single'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assembly:single emma:emma'
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
