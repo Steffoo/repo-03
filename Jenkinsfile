@@ -26,20 +26,21 @@ pipeline {
             }
         }
 
+/*
         stage('Checkstyle'){
             steps {
                 echo 'Checkstyle...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:check'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:check > /var/lib/jenkins'
             }
         }
-        /*
+        */
         stage('Findbugs'){
             steps {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
             }
         }
-        */
+
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
