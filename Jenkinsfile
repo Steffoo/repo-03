@@ -14,22 +14,32 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-
+                //sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
+                //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
         stage('Emma') {
             steps {
                 echo 'Emma...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
+                //sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
+                //archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
             }
         }
+
         stage('Checkstyle'){
             steps {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
             }
         }
+        /*
+        stage('Findbugs'){
+            steps {
+                echo 'Checkstyle...'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
+            }
+        }
+        */
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
