@@ -37,7 +37,7 @@ pipeline {
         stage('Findbugs'){
             steps {
                 echo 'Checkstyle...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean install site findbugs:findbugs'
             }
         }
 
