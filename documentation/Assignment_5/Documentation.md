@@ -10,13 +10,13 @@ Jenkins-Pipeline angelegt, damit der Tomcat in Jenkins gebaut und
 ausgefuehrt werden kann. Zum Schluss setzten wir einen Trigger, um zu
 gewaehrleisten, dass bei jedem GitHub-Push der Tomcat gebuilded wird, ebenso
 dass die Test ausgefuehrt werden und eine JAR-Datei abgelegt wird. Diese
-Schritte werden im folgenden detailierter erlaeutert.
+Schritte werden im nachfolgenden detailiert erlaeutert.
 
 ### Jenkins-Installation
 Im folgenden werden die Arbeitsschritte zur Installation des CI-Tools "Jenkins"
 auf dem Linux-Server beschrieben. Vorraussetzung ist, dass man sich bereits
 als "root" auf dem Linux-Server angemeldet hat.
-1. Den Publickey von Jenkins.io dem Server manuell hinzufuegen, damit diesen vertraut wird<br>
+1. Den Publickey von Jenkins.io dem Server manuell hinzufuegen, damit diesem vertraut wird<br>
    ```
    sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
    ```
@@ -37,7 +37,7 @@ als "root" auf dem Linux-Server angemeldet hat.
    ```
 
 5. In der Regel wird Jenkins nach der Installation automatisch gestartet. Falls
-   nicht, kann dies mit dem folgenden Befehl gestartet werden<br>
+   nicht, kann dies mit folgendem Befehl gestartet werden: <br>
    ```
    sudo systemctl start jenkins
    ```
@@ -46,18 +46,18 @@ als "root" auf dem Linux-Server angemeldet hat.
 
 ### Jenkins-Konfiguration
 Im folgenden wird beschrieben, wie Jenkins konfiguriert wird:
-1. Jenkins unter der IP-Adresse <i>http://SERVER-IP-ADRESSE:8080</i> öffnen. Dort wird angezeigt, unter welchem Pfad das
-   initial-Passwort liegt.
+1. Jenkins unter der IP-Adresse <i>http://SERVER-IP-ADRESSE:8080</i> öffnen.
+   Dort wird angezeigt, unter welchem Pfad das initial-Passwort liegt.
 
    ![initialAdminPassword](Pictures/initial_password.png)
 
-   Mithilfe des Unix-Befehls "cat" wurde die Dateiinhalt, welche das Passwort
+   Mithilfe des Unix-Befehls "cat" wurde der Dateiinhalt, welcher das Passwort
    enthaelt angezeigt. Das ausgegebene Passwort muss manuell von Hand kopiert werden<br>
    ```
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-2. Klicke auf " Install suggested plugins". Bei der Installation haben
+2. Klicke auf "Install suggested plugins". Bei der Installation haben
    wir bemerkt, dass kein Maven-Plugin installiert wurde (siehe 4.).
 
    ![Choose "Install suggested plugins"](Pictures/install_plugins.png)
@@ -103,21 +103,24 @@ wird (Es wird vorausgesetzt, dass man in Jenkins eingeloggt ist):
 
    ![Add owner](Pictures/owner.png)
 
-4. Wenn in Schritt 3 eine Organizationsname eingegeben wird, muss ein Filter erstellt werden. Dies ist notwendig, da sonst alle Repositories der Organization in Jenkins übernommen werden. In unserem Beispiel benoetigen wir nur "repo-03" und erstellen daher eine Filterung.
-Um die Filterung zu aktivieren, in der Projekt Konfigutation auf "Projects > GitHub Organization >
-   Behaviours" wechseln und dann auf Add klicken und "Filter by name (with wildcards)"
-   auswaehlen.
+4. Wenn in Schritt 3 ein Organizationsname eingegeben wird, muss ein Filter
+   erstellt werden. Es ist notwendig, weil sonst alle Repositories der
+   Organization in Jenkins übernommen werden. In unserem Fall benoetigen
+   wir nur "repo-03" und erstellen daher eine Filterung.
+   Um die Filterung zu aktivieren muss in der Projektkonfigutation unter
+   "Projects > GitHub Organization > Behaviours" auf Add geklickt
+   und "Filter by name (with wildcards)" ausgewählt werden.
 
    ![Add Filter](Pictures/filter_repo.png)
 
-  Bei dem Feld "Include" wird der Name des Repositories angegeben
-  (hier "repo-03").
+   Bei dem Feld "Include" wird der Name des Repositories angegeben
+   (hier "repo-03").
 
   ![Filter by name](Pictures/filter_name.png)
 
 ### Tomcat zum ersten Mal builden
-Im folgenden wird beschrieben, welche Schritte gemacht werden muessen, damit
-Jenkins den Tomcat bauen kann
+Es wird beschrieben, welche Schritte gemacht werden muessen, damit
+Jenkins den Tomcat bauen kann.
 1. Im Repository eine Datei namens "Jenkinsfile" anlegen
 
    ![Create Jenkinsfile](Pictures/create_Jenkinsfile.png)
@@ -158,7 +161,8 @@ Jenkins den Tomcat bauen kann
 Die Pipeline ist in drei Teilen (Build, Test und Deploy) aufgebaut, welche beginnend
 mit Build nacheinenander ausgeführt werden.
 #### Build
-In "Build" wird das Projekt gebaut und anschließend die erstellte .jar Datei in Jenkins archiviert. Dies kann dann in Jenkins heruntergeladen werden.
+In "Build" wird das Projekt gebaut und anschließend die erstellte .jar-Datei
+in Jenkins archiviert. Diese kann dann in Jenkins heruntergeladen werden.
 ```
 stage('Build') {
                steps {
@@ -171,7 +175,7 @@ stage('Build') {
 ```
 
 #### Test
-In Stage "Test" werden die Test ausgeführt
+In der Stage "Test" werden die Test ausgeführt.
 
 ```
 stage('Test') {
@@ -183,7 +187,10 @@ stage('Test') {
 ```
 
 #### Deploy
-In Stage "Deploy" ist es möglich die in "Build" erstellte .jar Datei zu starten. Somit hat man immer ein System der lauffähig und erreichbar ist. In unserem Repository ist der "Build" Stage definiert jedoch führt dies aktuell keine Deploy aus.
+In der Stage "Deploy" ist es möglich die in "Build" erstellte .jar-Datei zu
+starten. Somit hat man immer ein System, welches lauffähig und erreichbar ist.
+In unserem Repository ist die "Build" Stage definiert, jedoch führt diese
+aktuell keinen Deploy aus.
 ```
 stage('Deploy') {
                steps {
@@ -200,10 +207,12 @@ trotzdem erwaehnt wird. Die entgueltige Lösung war es, einen Trigger in der
 Pipeline hinzufuegen.
 
 ##### Webhooks (Fehlschlag)
-Es wurde versucht, dass bei einem Push auf das Repository, GitHub selbst
-über einen Webhook Jenkins informiert, dass Änderungen vorgenommen wurden
-und ein neuer Build ausgeführt werden kann.
-Da wir aktuell diese Möglichkeit nicht testen können, können wir dafür auch keine genaue Anleitung geben. Jedoch ist es möglich, sich [hier](https://support.cloudbees.com/hc/en-us/articles/224543927-GitHub-webhook-configuration) zu informieren
+Bei einem Push auf das Repository sollte GitHub selbst über einen Webhook
+Jenkins informiert, dass Änderungen vorgenommen wurden und ein neuer Build
+ausgeführt werden kann.
+Da wir aktuell diese Möglichkeit nicht testen können, können wir dafür auch
+keine genaue Anleitung geben. Jedoch ist es möglich, sich [hier](https://support.cloudbees.com/hc/en-us/articles/224543927-GitHub-webhook-configuration)
+zu informieren.
 
 ##### Trigger im Jenkinsfile hinzufuegen
 Weil die Webhook-Variante (GitHub benachrichtigt Jenkins) nicht funktioniert hat,
@@ -236,10 +245,15 @@ Die Einstellung der Intervall ist wie in [Cron](https://wiki.ubuntuusers.de/Cron
 ```
 
 ### Probleme
-* Build automatisch ausführen, wenn im GitHub Repository eine Änderung(Push) stattfindet (Webhook)
-   * Anstatt Webhook haben wir haben wir pollSCM genutzt. Dies überprüft in unserem Beispiel alle 5 Minuten, ob eine Änderung im Repository stattgefunden hat und führt entsprechend die Befehle aus
-* Befehle zum ausführen der Build und Tests werden nicht ausgeführt
-   * Nach erneuten lesen der Jenkins.io Dokumentation haben wir herausgefunden, dass Befehle die ausgeführt werden sollen, mit ```sh ''``` gekennzeichnet werden müssen. (siehe Jenkinsfile)
-* mvn Befehle werden nicht ausgeführt
-   * Maven (mvn) wurde bei der Installation von Jenkins nicht mit installiert. Deshalb musste dies nachinstalliert werden
-   
+* Build automatisch ausführen, wenn im GitHub Repository eine Änderung(Push)
+  stattfindet (Webhook).
+   * Anstelle von Webhooks haben wir pollSCM genutzt. Dies überprüft in
+     unserem Beispiel alle 5 Minuten, ob eine Änderung im Repository
+     stattgefunden hat und führt die entsprechenden Befehle aus.
+* Befehle zum ausführen des Builds und der Tests werden nicht ausgeführt.
+   * Nach erneutem lesen der Jenkins.io-Dokumentation, fanden wird heraus,
+     dass alle Shell-Befehle die ausgefhrt werden sollen, mit ```sh ''```
+     gekennzeichnet werden müssen (siehe Jenkinsfile).
+* mvn-Befehle werden nicht ausgeführt.
+   * Maven (mvn) wurde bei der Installation von Jenkins nicht mit installiert.
+     Deshalb musste es nachinstalliert werden.
