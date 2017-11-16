@@ -37,8 +37,8 @@ pipeline {
         stage('Findbugs'){
             steps {
                 echo 'Checkstyle...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean findbugs:findbugs -xdocs -output ./target/findbugs.xml'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site'
+                //archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/'
             }
         }
 
