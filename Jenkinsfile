@@ -52,6 +52,11 @@ pipeline {
                 echo 'Findbugs...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
             }
+            post {
+              success {
+                findbugs pattern: 'target/findbugsXml.xml'
+              }
+            }
         }
         stage('Deploy') {
             steps {
