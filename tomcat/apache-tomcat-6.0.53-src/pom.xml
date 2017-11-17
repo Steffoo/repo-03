@@ -5,6 +5,7 @@
   <artifactId>tomcat-6.0.53</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
+
 <build>
   <plugins>
     <plugin>
@@ -20,26 +21,24 @@
         </descriptorRefs>
       </configuration>
     </plugin>
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>findbugs-maven-plugin</artifactId>
-      <version>3.0.6-SNAPSHOT</version>
-      <configuration>
-        <xmlOutput>true</xmlOutput>
-        <xmlOutputDirectory>target/site</xmlOutputDirectory>
-      </configuration>
-    </plugin>
   </plugins>
 </build>
+
 <reporting>
   <plugins>
-	   <plugin>
-	      <groupId>org.codehaus.mojo</groupId>
-	      <artifactId>findbugs-maven-plugin</artifactId>
-	      <version>3.0.6-SNAPSHOT</version>
-    </plugin>
+    <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>findbugs-maven-plugin</artifactId>
+           <version>2.5.2</version>
+           <configuration>
+              <findbugsXmlOutput>true</findbugsXmlOutput>
+              <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+              <xmlOutput>true</xmlOutput>
+           </configuration>
+        </plugin>
   </plugins>
 </reporting>
+
 <dependencies>
 <dependency>
     <groupId>org.webjars</groupId>
