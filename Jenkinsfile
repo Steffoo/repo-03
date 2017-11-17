@@ -4,8 +4,10 @@ pipeline {
       pollSCM('*/5 * * * *')
     }
     stages {
-        stage('Clean'){
-          sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean'
+        stage('Clean') {
+          steps {
+            sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean'
+          }
         }
         stage('Build') {
             steps {
