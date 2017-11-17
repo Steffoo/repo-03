@@ -48,4 +48,14 @@ pipeline {
             }
         }
     }
+
+    publishHTML(target: [
+    allowMissing: false, 
+    alwaysLinkToLastBuild: false,
+    keepAll: true,
+    reportDir: './repo-03_repo-03_master-CMDODME52PJDU2EPVQQD5P4QJKXG2H2PXX4ZRHWWBHBYLZICVSDQ/tomcat/apache-tomcat-6.0.53-src/target/site/emma',
+    reportFiles: 'index.html',
+    reportName: 'Emma Report',
+    reportTitles: ''
+    ])
 }
