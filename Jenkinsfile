@@ -27,7 +27,7 @@ pipeline {
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/coverage.xml'
 
-                publishHTML(target: [
+                publishHTML target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: false,
                 keepAll: true,
