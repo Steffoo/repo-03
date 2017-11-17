@@ -6,21 +6,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assembly:single'
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                //sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
                 //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
         stage('Emma') {
             steps {
-                echo 'Emma...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
               }
                 post {
@@ -39,7 +36,6 @@ pipeline {
         }
         stage('Checkstyle'){
             steps {
-                echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
             }
             post {
@@ -50,7 +46,6 @@ pipeline {
         }
         stage('Findbugs'){
             steps {
-                echo 'Findbugs...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
             }
             post {
@@ -61,7 +56,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
             }
         }
     }
