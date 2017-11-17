@@ -25,7 +25,7 @@ pipeline {
                 echo 'Emma...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
                 // run tests with coverage
-                sh 'bundle exec rake spec'
+                sh 'bundle exec rake tomcat/apache-tomcat-6.0.53-src/target/site/emma'
 
                 post {
                   success {
