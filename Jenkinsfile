@@ -35,21 +35,13 @@ pipeline {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:check > /var/lib/jenkins'
             }
         }
-
+*/
         stage('Findbugs'){
             steps {
                 echo 'Findbugs...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site'
-
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/findbugs.html'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/project-reports.html'
-
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs
             }
         }
-
-*/
-
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
