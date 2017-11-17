@@ -38,7 +38,7 @@ pipeline {
         stage('Findbugs'){
             steps {
                 echo 'Findbugs...'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
             }
         }
         stage('Deploy') {
