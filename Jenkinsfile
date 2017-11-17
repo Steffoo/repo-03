@@ -24,17 +24,22 @@ pipeline {
             steps {
                 echo 'Emma...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
-                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/coverage.xml'
+                // run tests with coverage
+                sh 'bundle exec rake spec'
 
-                publishHTML target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma',
-                reportFiles: 'index.html',
-                reportName: 'Emma Report',
-                ]
+                post {
+                  success {
+                    // publish html
+                    publishHTML target: [
+                      allowMissing: false,
+                      alwaysLinkToLastBuild: false,
+                      keepAll: true,
+                      reportDir: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma',
+                      reportFiles: 'index.html',
+                      reportName: 'Emma Report',
+                    ]
+                  }
+                }
             }
         }
         /*
