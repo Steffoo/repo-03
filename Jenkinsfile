@@ -44,6 +44,11 @@ pipeline {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
             }
+            post {
+              success {
+                checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml'
+              }
+            }
         }
         /*
         stage('Findbugs'){
