@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo 'Emma...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
-
+              }
                 post {
                   success {
                     // publish html
@@ -38,7 +38,6 @@ pipeline {
                     ]
                   }
                 }
-            }
         }
         /*
         stage('Checkstyle'){
