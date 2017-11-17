@@ -54,7 +54,7 @@ pipeline {
             }
             post {
               success {
-                findbugs pattern: 'target/findbugsXml.xml'
+                findbugs pattern: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'
               }
             }
         }
