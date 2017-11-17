@@ -42,14 +42,14 @@ pipeline {
         stage('Checkstyle'){
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site checkstyle:checkstyle'
+              //  sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site checkstyle:checkstyle'
             }
             post {
               success {
                 archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
                 //checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml'
-                sh 'cd tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
-                archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
+                //sh 'cd tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
+                //archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
               }
             }
         }
