@@ -26,6 +26,15 @@ pipeline {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
                 archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/coverage.xml'
+
+                publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma',
+                reportFiles: 'index.html',
+                reportName: 'Emma Report',
+                ]
             }
         }
         /*
@@ -48,14 +57,4 @@ pipeline {
             }
         }
     }
-
-    publishHTML(target: [
-    allowMissing: false, 
-    alwaysLinkToLastBuild: false,
-    keepAll: true,
-    reportDir: './repo-03_repo-03_master-CMDODME52PJDU2EPVQQD5P4QJKXG2H2PXX4ZRHWWBHBYLZICVSDQ/tomcat/apache-tomcat-6.0.53-src/target/site/emma',
-    reportFiles: 'index.html',
-    reportName: 'Emma Report',
-    reportTitles: ''
-    ])
 }
