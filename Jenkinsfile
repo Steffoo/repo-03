@@ -4,9 +4,12 @@ pipeline {
       pollSCM('*/5 * * * *')
     }
     stages {
+        stage('Clean'){
+          sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean'
+        }
         stage('Build') {
             steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn clean compile assembly:single'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn compile assembly:single'
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
@@ -40,7 +43,8 @@ pipeline {
             }
             post {
               success {
-                checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml'
+                archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
+                //checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml'
               }
             }
         }
@@ -56,6 +60,15 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+              sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn assembly:single'
+            }
+            post{
+              always{
+                archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
+                archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
+              }
             }
         }
     }
