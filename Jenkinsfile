@@ -65,11 +65,8 @@ pipeline {
               sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn assembly:single'
             }
             post{
-              always{
+              success{
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site'
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
-                archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
               }
             }
         }
