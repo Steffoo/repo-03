@@ -11,7 +11,6 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
-        /*
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -38,7 +37,6 @@ pipeline {
                   }
                 }
         }
-        */
         stage('Checkstyle'){
             steps {
                 echo 'Checkstyle...'
@@ -50,7 +48,6 @@ pipeline {
               }
             }
         }
-        /*
         stage('Findbugs'){
             steps {
                 echo 'Findbugs...'
@@ -62,7 +59,6 @@ pipeline {
               }
             }
         }
-        */
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
