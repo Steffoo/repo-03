@@ -23,8 +23,8 @@ pipeline {
         stage('Emma') {
             steps {
                 echo 'Emma...'
-                //sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
-                //archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
+                archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
             }
         }
         /*
