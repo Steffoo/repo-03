@@ -2,7 +2,7 @@
 ## Einleitung
 Ziel des Assignments ist es, den auf Maven umgestellten Tomcat-Build mit Hilfe
 des CI-Tools "Jenkins" zu automatisieren. Wie diese Aufgabe bearbeitet wurde, wird
-im folgenden beschrieben.
+im Folgenden beschrieben.
 
 ## Ablauf
 Zuallererst haben wir Jenkins auf dem Linux-Server installiert. Danach wurde eine
@@ -13,7 +13,7 @@ dass die Test ausgefuehrt werden und eine JAR-Datei abgelegt wird. Diese
 Schritte werden im nachfolgenden detailiert erlaeutert.
 
 ### Jenkins-Installation
-Im folgenden werden die Arbeitsschritte zur Installation des CI-Tools "Jenkins"
+Im Folgenden werden die Arbeitsschritte zur Installation des CI-Tools "Jenkins"
 auf dem Linux-Server beschrieben. Vorraussetzung ist, dass man sich bereits
 als "root" auf dem Linux-Server angemeldet hat.
 1. Den Publickey von Jenkins.io dem Server manuell hinzufuegen, damit diesem vertraut wird<br>
@@ -45,7 +45,7 @@ als "root" auf dem Linux-Server angemeldet hat.
 
 
 ### Jenkins-Konfiguration
-Im folgenden wird beschrieben, wie Jenkins konfiguriert wird:
+Im Folgenden wird beschrieben, wie Jenkins konfiguriert wird:
 1. Jenkins unter der IP-Adresse <i>http://SERVER-IP-ADRESSE:8080</i> öffnen.
    Dort wird angezeigt, unter welchem Pfad das initial-Passwort liegt.
 
@@ -76,7 +76,7 @@ Im folgenden wird beschrieben, wie Jenkins konfiguriert wird:
    ```
 
 ### Repository einbinden
-Im folgenden wird beschrieben, wie ein GitHub-Repository in Jenkins eingebunden
+Im Folgenden wird beschrieben, wie ein GitHub-Repository in Jenkins eingebunden
 wird (Es wird vorausgesetzt, dass man in Jenkins eingeloggt ist):
 1. Das Repository anlegen
    <li>Klicke auf "Element anlegen" </li>
@@ -126,7 +126,7 @@ Jenkins den Tomcat bauen kann.
    ![Create Jenkinsfile](Pictures/create_Jenkinsfile.png)
 
 2. Anhand der Jenkins-Dokumentation (siehe https://jenkins.io/doc/book/pipeline/)
-   wurde die Struktur der Pipeline im Jenkinsfile angelegt. Im folgenden wird
+   wurde die Struktur der Pipeline im Jenkinsfile angelegt. Im Folgenden wird
    das Resultat gezeigt:
 
    ```
