@@ -11,6 +11,7 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
+        /*
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -18,8 +19,7 @@ pipeline {
                 //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
-
-/*
+        */
         stage('Emma') {
             steps {
                 echo 'Emma...'
@@ -27,15 +27,14 @@ pipeline {
                 //archiveArtifacts artifacts: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma/index.html'
             }
         }
-
-
+        /*
         stage('Checkstyle'){
             steps {
                 echo 'Checkstyle...'
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:check > /var/lib/jenkins'
             }
         }
-*/
+        */
         stage('Findbugs'){
             steps {
                 echo 'Findbugs...'
