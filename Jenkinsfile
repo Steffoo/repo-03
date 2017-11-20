@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
-                //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
+                junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
         stage('Reports') {
