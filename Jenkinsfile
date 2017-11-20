@@ -11,8 +11,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn compile assembly:single'
-                archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn compile'
+                //archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
         stage('Test') {
@@ -49,8 +49,8 @@ pipeline {
             post {
               success {
                 //archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
-                checkstyle pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'100'
-                //step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'100'])
+                //checkstyle pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'100'
+                step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml', unstableTotalAll:'100'])
                 //sh 'cd tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
                 //archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
               }
