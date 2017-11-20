@@ -21,6 +21,7 @@ pipeline {
                 //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
+        /*
         stage('Emma') {
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
@@ -39,6 +40,7 @@ pipeline {
                   }
                 }
         }
+        */
         stage('Checkstyle'){
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle'
@@ -53,7 +55,7 @@ pipeline {
               }
             }
         }
-        stage('Findbugs'){
+        /*stage('Findbugs'){
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
             }
@@ -63,6 +65,7 @@ pipeline {
               }
             }
         }
+        */
         stage('Deploy') {
             steps {
               sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn assembly:single'
