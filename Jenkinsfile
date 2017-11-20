@@ -46,8 +46,8 @@ pipeline {
             }
             post {
               success {
-                archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
-                //checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml'
+                //archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
+                checkstyle pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml', unstableTotalAll: '80000'
                 //sh 'cd tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
                 //archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
               }
