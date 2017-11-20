@@ -12,7 +12,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn compile'
-                //archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
             }
         }
         stage('Test') {
@@ -21,52 +20,30 @@ pipeline {
                 //junit './tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
-        /*
-        stage('Emma') {
-            steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma'
-              }
-                post {
-                  success {
-                    // publish html
-                    publishHTML target: [
-                      allowMissing: false,
-                      alwaysLinkToLastBuild: false,
-                      keepAll: true,
-                      reportDir: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma',
-                      reportFiles: 'index.html',
-                      reportName: 'Emma Report',
-                    ]
-                  }
-                }
+        stage('Reports') {
+          steps{
+            sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma findbugs:findbugs checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/tomcat/apache-tomcat-6.0.53-src/checkstyle.xml"'
+          }
+          post {
+            success {
+              //Publish emma.html
+              publishHTML target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'tomcat/apache-tomcat-6.0.53-src/target/site/emma',
+                reportFiles: 'index.html',
+                reportName: 'Emma Report',
+              ]
+
+              //Publish FindBugs
+              findbugs pattern: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'
+
+              //Publish checkstyle
+              checkstyle pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'80000'
+            }
+          }
         }
-        */
-        stage('Checkstyle'){
-            steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/tomcat/apache-tomcat-6.0.53-src/checkstyle.xml"'
-              //  sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn site checkstyle:checkstyle'
-            }
-            post {
-              success {
-                //archiveArtifacts artifacts: '**/target/checkstyle-result.xml', fingerprint: true
-                //checkstyle pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'100'
-                step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'tomcat/apache-tomcat-6.0.53-src/target/checkstyle-result.xml', unstableTotalAll:'100'])
-                //sh 'cd tomcat/apache-tomcat-6.0.53-src/target && zip -r site.zip site/'
-                //archiveArtifacts artifacts: '**/target/site.zip', fingerprint: true
-              }
-            }
-        }
-        /*stage('Findbugs'){
-            steps {
-                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn findbugs:findbugs'
-            }
-            post {
-              success {
-                findbugs pattern: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'
-              }
-            }
-        }
-        */
         stage('Deploy') {
             steps {
               sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn assembly:single'
