@@ -17,12 +17,12 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn test'
-                junit 'tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
             }
         }
         stage('Reports') {
           steps{
             sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn emma:emma findbugs:findbugs checkstyle:checkstyle -Dcheckstyle.config.location="${WORKSPACE}/tomcat/apache-tomcat-6.0.53-src/checkstyle.xml"'
+            junit 'tomcat/apache-tomcat-6.0.53-src/target/surefire-reports/*.xml'
           }
           post {
             success {
