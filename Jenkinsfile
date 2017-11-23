@@ -37,10 +37,10 @@ pipeline {
               ]
 
               //Publish FindBugs
-              findbugs pattern: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'
+              step([$class: 'FindBugsPublisher', pattern: 'tomcat/apache-tomcat-6.0.53-src/target/findbugsXml.xml'])
 
               //Publish checkstyle
-              checkstyle pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'80000'
+              step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'Tomcat/target/checkstyle-result.xml', unstableTotalAll:'90000'])
             }
           }
         }
