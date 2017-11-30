@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && docker build -t tomcat'
+              sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && docker build -t tomcat .'
 
             }
             post{
