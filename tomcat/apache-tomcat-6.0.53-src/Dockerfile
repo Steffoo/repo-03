@@ -1,4 +1,5 @@
 FROM openjdk:8
+WORKDIR /
 COPY target/tomcat-6.0.53-1.0.0-jar-with-dependencies.jar .
 ADD conf/ conf/
 ADD webapps/ webapps/
