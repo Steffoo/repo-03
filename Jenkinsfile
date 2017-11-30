@@ -46,11 +46,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && mvn assembly:single'
+              sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && docker build -t tomcat'
+
             }
             post{
               success{
                 archiveArtifacts artifacts: '**/target/*jar-with-dependencies.jar', fingerprint: true
+                sh 'cd ./tomcat/apache-tomcat-6.0.53-src/ && docker run -d -p 8081:8080 tomcat > /tmp/tomcat-docker'
               }
             }
         }
